@@ -7,6 +7,9 @@
  */
 
 #include <iostream>
+#include <sqlite3.h>
+
+class sqlite3;
 
 using namespace std;
 
@@ -15,4 +18,6 @@ public:
 	DB();
 	virtual ~DB();
 	void Saludo();
+private:
+	void conectarBD();
 };
