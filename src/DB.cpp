@@ -34,7 +34,7 @@ void DB::abrirBD() {
 
 //Se utiliza para imprimir los resultados de SelectUsuario
 /*Modificar luego para establecer otras condiciones de callback*/
-static int callback(void *data, int argc, char **argv, char **azColName) {
+static int DB::callback(void *data, int argc, char **argv, char **azColName) {
 	int i;
 	cout << (const char*) data << endl;
 	for (i = 0; i < argc; i++) {

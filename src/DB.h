@@ -23,6 +23,7 @@ public:
 	void DeleteUsuario(string);
 private:
 	void abrirBD();
+	static int callback(void*, int, char**, char**);
 
 	sqlite3* db;
 };
