@@ -18,6 +18,10 @@ public:
 	DB();
 	virtual ~DB();
 	void Saludo();
+	void InsertarUsuario(string,string);
 private:
-	void conectarBD();
+	void abrirBD();
+	void cerrarBD();
+
+	sqlite3* db;
 };
