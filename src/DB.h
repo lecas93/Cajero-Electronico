@@ -17,9 +17,10 @@ class DB {
 public:
 	DB();
 	virtual ~DB();
-	void Saludo();
-	void InsertUsuario(string,string);
-	void SelectUsuario(string,string);
+	void InsertUsuario(string, string, string, string, string, double);
+	void SelectUsuario(string);
+	void UpdateUsuario();
+	void DeleteUsuario(string);
 private:
 	void abrirBD();
 

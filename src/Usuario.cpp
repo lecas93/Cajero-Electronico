@@ -12,7 +12,13 @@
 class Sesion;
 
 Usuario::Usuario() {
-	// TODO Auto-generated constructor stub
+	numTarjeta = 0;
+	PIN = 0;
+	name = 0;
+	lName = 0;
+	phone = 0;
+	balance = 0;
+
 	IdentificarUsuario();
 }
 
@@ -20,11 +26,11 @@ Usuario::~Usuario() {
 	// TODO Auto-generated destructor stub
 }
 
-string Usuario::getNumTarjeta(){
+string Usuario::getNumTarjeta() {
 	return numTarjeta;
 }
 
-string Usuario::getPIN(){
+string Usuario::getPIN() {
 	return PIN;
 }
 

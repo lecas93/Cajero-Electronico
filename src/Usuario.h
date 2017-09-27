@@ -22,5 +22,7 @@ private:
 
 	string numTarjeta;
 	string PIN;
+	string name, lName, phone;
+	double balance;
 };
 

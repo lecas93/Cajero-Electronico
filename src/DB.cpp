@@ -11,15 +11,11 @@
 DB::DB() {
 	// TODO Auto-generated constructor stub
 	//InsertUsuario("987", "987");
-	SelectUsuario("1234", "1234");
+	SelectUsuario("1234");
 }
 
 DB::~DB() {
 	// TODO Auto-generated destructor stub
-}
-
-void DB::Saludo() {
-	cout << "Saludos desde DB ;)" << endl;
 }
 
 void DB::abrirBD() {
@@ -49,7 +45,7 @@ static int callback(void *data, int argc, char **argv, char **azColName) {
 }
 
 //Insert de usuario basico, falta modificar para que añada la demas informacion a almacenar
-void DB::InsertUsuario(string ID, string PIN) {
+void DB::InsertUsuario(string ID, string PIN, string NAME, string LNAME, string PHONE, double BALANCE) {
 	char *zErrMsg = 0;
 	int rc;
 
@@ -75,7 +71,7 @@ void DB::InsertUsuario(string ID, string PIN) {
 }
 
 //Modificiar para verficicar la existencia de un solo usuario
-void DB::SelectUsuario(string ID, string PIN) {
+void DB::SelectUsuario(string ID) {
 	char *zErrMsg = 0;
 	int rc;
 	const char* data = "Callback function called";
@@ -84,7 +80,7 @@ void DB::SelectUsuario(string ID, string PIN) {
 	abrirBD();
 
 	/* Create SQL statement */
-	string sql = "SELECT * from USERS";
+	string sql = "SELECT * FROM USERS WHERE ID = '" + ID + "'";
 
 	/* Execute SQL statement */
 	rc = sqlite3_exec(db, sql.c_str(), callback, (void*) data, &zErrMsg);
@@ -97,5 +93,9 @@ void DB::SelectUsuario(string ID, string PIN) {
 	}
 
 	sqlite3_close(db);
+}
+
+void DB::UpdateUsuario(){
+
 }
 
