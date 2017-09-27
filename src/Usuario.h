@@ -5,11 +5,16 @@
  *      Author: Angel Leon
  */
 
+using namespace std;
+
 class Usuario {
 public:
 	Usuario();
 	virtual ~Usuario();
 private:
 	void IdentificarUsuario();
+	bool checarNumTarjeta();
+
+	string numTarjeta = NULL;
 };
 
