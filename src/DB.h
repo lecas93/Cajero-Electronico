@@ -21,7 +21,6 @@ public:
 	void InsertarUsuario(string,string);
 private:
 	void abrirBD();
-	void cerrarBD();
 
 	sqlite3* db;
 };

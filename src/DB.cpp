@@ -10,7 +10,7 @@
 
 DB::DB() {
 	// TODO Auto-generated constructor stub
-	InsertarUsuario("1234", "1234");
+	InsertarUsuario("987", "987");
 }
 
 DB::~DB() {
@@ -39,9 +39,9 @@ void DB::abrirBD() {
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 	int i;
 	for (i = 0; i < argc; i++) {
-		//printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << endl;
 	}
-	//printf("\n");
+	cout << endl;
 	return 0;
 }
 
