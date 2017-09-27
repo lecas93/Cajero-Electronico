@@ -17,6 +17,7 @@ void IdentificarUsuario(){
 
 int main(){
 	cout<<"Hola mundo :)"<<endl;
+	//Espera simulada de usuario, si pasa se procede a sesion
 	Sesion sesion;
 	return 0;
 }

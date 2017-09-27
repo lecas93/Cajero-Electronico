@@ -29,17 +29,17 @@ void Sesion::MostrarOpciones() {
 		cin >> opcion;
 		switch (opcion) {
 		case 1:
-			//Ver saldo
+			//TODO Ver saldo
 			cout << "Tu saldo es: " << endl;
 			ConfirmarSalida();
 			break;
 		case 2:
-			//Ver transacciones
+			//TODO Ver transacciones
 			cout << "Transacciones recientes" << endl;
 			ConfirmarSalida();
 			break;
 		case 3:
-			//Realizar retiro
+			//TODO Realizar retiro
 			cout << "Retiro..." << endl;
 			sesionActiva = false;
 			//Salir
@@ -58,12 +58,15 @@ void Sesion::MostrarOpciones() {
 }
 
 void Sesion::VerSaldo() {
+	//TODO
 }
 
 void Sesion::VerTransacciones() {
+	//TODO
 }
 
 void Sesion::Retirar() {
+	//TODO
 }
 
 void Sesion::ConfirmarSalida() {
