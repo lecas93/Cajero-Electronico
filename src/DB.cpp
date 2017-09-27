@@ -17,6 +17,6 @@ DB::~DB() {
 }
 
 void DB::Saludo() {
-	cout << "Saludos desde DB :)" << endl;
+	cout << "Saludos desde DB ;)" << endl;
 }
 
