@@ -18,7 +18,8 @@ public:
 	DB();
 	virtual ~DB();
 	void Saludo();
-	void InsertarUsuario(string,string);
+	void InsertUsuario(string,string);
+	void SelectUsuario(string,string);
 private:
 	void abrirBD();
 
