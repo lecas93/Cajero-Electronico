@@ -11,9 +11,10 @@
 
 using namespace std;
 
-Sesion::Sesion() {
-	// TODO Auto-generated constructor stub
-	//Se recibe un nuevo usuario
+Sesion::Sesion(Usuario* usuario) {
+	DB db;
+	this->db = &db;
+	this->usuario = usuario;
 	sesionActiva = true;
 	MostrarOpciones();
 }
@@ -30,20 +31,16 @@ void Sesion::MostrarOpciones() {
 		cin >> opcion;
 		switch (opcion) {
 		case 1:
-			//TODO Ver saldo
-			cout << "Tu saldo es: " << endl;
+			VerSaldo();
 			ConfirmarSalida();
 			break;
 		case 2:
-			//TODO Ver transacciones
-			cout << "Transacciones recientes" << endl;
+			VerTransacciones();
 			ConfirmarSalida();
 			break;
 		case 3:
-			//TODO Realizar retiro
-			cout << "Retiro..." << endl;
+			Retirar();
 			sesionActiva = false;
-			//Salir
 			break;
 		case 4:
 			sesionActiva = false;
@@ -59,15 +56,15 @@ void Sesion::MostrarOpciones() {
 }
 
 void Sesion::VerSaldo() {
-	//TODO
+	cout << "Tu saldo es: " << endl;
 }
 
 void Sesion::VerTransacciones() {
-	//TODO
+	cout << "Transacciones recientes" << endl;
 }
 
 void Sesion::Retirar() {
-	//TODO
+	cout << "Retiro..." << endl;
 }
 
 void Sesion::ConfirmarSalida() {

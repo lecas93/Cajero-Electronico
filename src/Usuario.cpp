@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include "Usuario.h"
+#include "Sesion.h"
+
+class Sesion;
 
 Usuario::Usuario() {
 	// TODO Auto-generated constructor stub
@@ -17,15 +20,33 @@ Usuario::~Usuario() {
 	// TODO Auto-generated destructor stub
 }
 
-void Usuario::IdentificarUsuario(){
-	//Ingresar numero de tarjeta (16 digitos)
-		cout << "Ingrese su numero de tarjeta..." << endl;
-		cin >> numTarjeta;
-		cout << checarNumTarjeta();
-		//Solicitar PIN (4 digitos)
-		//Error en alguno de los dos manda a inicio
+string Usuario::getNumTarjeta(){
+	return numTarjeta;
 }
 
-bool Usuario::checarNumTarjeta(){
-	return numTarjeta.find_first_not_of("0123456789") == string::npos;
+string Usuario::getPIN(){
+	return PIN;
+}
+
+void Usuario::IdentificarUsuario() {
+	//Ingresar numero de tarjeta (16 digitos)
+	cout << "Ingrese su numero de tarjeta..." << endl;
+	cin >> numTarjeta;
+	cout << "\nIngrese su PIN de usuario..." << endl;
+	cin >> PIN;
+	if (checarSoloNumeros(numTarjeta) && checarSoloNumeros(PIN)) {
+		Login();
+	} else {
+		cout
+				<< "Error! Numero de tarjeta y/o PIN solo deben contener valores numericos!\n"
+				<< "Intente de nuevo!" << endl;
+	}
+}
+
+bool Usuario::checarSoloNumeros(string input) {
+	return input.find_first_not_of("0123456789") == string::npos;
+}
+
+void Usuario::Login() {
+	Sesion sesion(this);
 }

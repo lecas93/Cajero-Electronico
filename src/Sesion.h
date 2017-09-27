@@ -1,3 +1,4 @@
+#pragma once
 /*
  * Sesion.h
  *
@@ -5,9 +6,15 @@
  *      Author: angel león
  */
 
+#include "Usuario.h"
+#include "DB.h"
+
+class Usuario;
+class DB;
+
 class Sesion {
 public:
-	Sesion();
+	Sesion(Usuario*);
 	virtual ~Sesion();
 private:
 	void MostrarOpciones();
@@ -18,4 +25,7 @@ private:
 
 	bool sesionActiva = false;
 	int opcion = 0, confirmacion = 0;
+
+	Usuario* usuario;
+	DB* db;
 };

@@ -5,16 +5,22 @@
  *      Author: Angel Leon
  */
 
+#pragma once
+
 using namespace std;
 
 class Usuario {
 public:
 	Usuario();
 	virtual ~Usuario();
+	string getNumTarjeta();
+	string getPIN();
 private:
 	void IdentificarUsuario();
-	bool checarNumTarjeta();
+	bool checarSoloNumeros(string);
+	void Login();
 
-	string numTarjeta = NULL;
+	string numTarjeta;
+	string PIN;
 };
 

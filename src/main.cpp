@@ -9,12 +9,17 @@
 #include <stdlib.h>
 #include "Sesion.h"
 #include "Usuario.h"
+#include "DB.h"
+
+class Sesion;
+class Usuario;
+class DB;
 
 using namespace std;
 
 int main() {
-	system("pausa");
-	//Usuario usuario;
-	//Sesion sesion;
+	//system("pause");
+	DB myDb;
+	Usuario usuario;
 	return 0;
 }
