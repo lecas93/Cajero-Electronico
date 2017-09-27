@@ -5,6 +5,8 @@
  *      Author: Angel Leon
  */
 
+//La BD se planea hacerla con sqlite :)
+
 #include "DB.h"
 
 DB::DB() {
