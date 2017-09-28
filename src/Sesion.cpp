@@ -38,7 +38,7 @@ void Sesion::ValidarUsuario() {
 void Sesion::MostrarOpciones() {
 	while (sesionActiva) {
 		cout << "Ingrese una opcion:\n1.- Checar saldo\n"
-				<< "2.-Ver transacciones recientes\n"
+				<< "2.- Ver transacciones recientes\n"
 				<< "3.- Realizar un retiro\n4.- Salir" << endl;
 		cin >> opcion;
 		switch (opcion) {
