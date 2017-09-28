@@ -7,23 +7,29 @@
 
 #include <iostream>
 #include "Usuario.h"
-#include "Sesion.h"
 
-class Sesion;
-
-Usuario::Usuario() {
-	numTarjeta = "";
+Usuario::Usuario(string numTarjeta) {
+	this->numTarjeta = numTarjeta;
 	PIN = "";
 	name = "";
 	lName = "";
 	phone = "";
 	balance = 0;
 
-	IdentificarUsuario();
+	Login();
 }
 
 Usuario::~Usuario() {
 	// TODO Auto-generated destructor stub
+}
+
+void Usuario::setValues(string PIN, string name, string lName, string phone,
+		string balance) {
+	this->PIN = PIN;
+	this->name = name;
+	this->lName = lName;
+	this->phone = phone;
+	this->balance = atof(balance.c_str());
 }
 
 string Usuario::getNumTarjeta() {
@@ -34,25 +40,30 @@ string Usuario::getPIN() {
 	return PIN;
 }
 
-void Usuario::IdentificarUsuario() {
-	//Ingresar numero de tarjeta (16 digitos)
-	cout << "Ingrese su numero de tarjeta..." << endl;
-	cin >> numTarjeta;
-	cout << "\nIngrese su PIN de usuario..." << endl;
-	cin >> PIN;
-	if (checarSoloNumeros(numTarjeta) && checarSoloNumeros(PIN)) {
-		Login();
-	} else {
-		cout
-				<< "Error! Numero de tarjeta y/o PIN solo deben contener valores numericos!\n"
-				<< "Intente de nuevo!" << endl;
-	}
+string Usuario::getName(){
+	return name;
 }
 
-bool Usuario::checarSoloNumeros(string input) {
-	return input.find_first_not_of("0123456789") == string::npos;
+string Usuario::getlastName(){
+	return lName;
+}
+
+string Usuario::getPhone(){
+	return phone;
+}
+
+double Usuario::getBalance(){
+	return balance;
 }
 
 void Usuario::Login() {
-	Sesion sesion(this);
+	cout << "\nIngrese su PIN de usuario..." << endl;
+	string pin;
+	cin >> pin;
+	if (Utility::checarSoloNumeros(pin)) {
+		Sesion sesion(this, pin);
+	} else {
+		cout << "Error! PIN solo debe contener valores numericos!\n"
+				<< "Intente de nuevo!" << endl;
+	}
 }

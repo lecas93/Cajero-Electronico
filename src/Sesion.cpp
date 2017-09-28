@@ -11,16 +11,28 @@
 
 using namespace std;
 
-Sesion::Sesion(Usuario* usuario) {
-	DB db;
-	this->db = &db;
+Sesion::Sesion(Usuario* usuario, string PIN) {
 	this->usuario = usuario;
-	sesionActiva = true;
-	MostrarOpciones();
+	this->PIN = PIN;
+	DB db(this->usuario);
+	this->db = &db;
+
+	ValidarUsuario();
 }
 
 Sesion::~Sesion() {
 	// TODO Auto-generated destructor stub
+}
+
+void Sesion::ValidarUsuario() {
+	db->SelectUsuario(usuario->getNumTarjeta());
+	if (this->PIN == usuario->getPIN()) {
+		cout << "Login exitoso!" << endl;
+		sesionActiva = true;
+		MostrarOpciones();
+	} else {
+		cout << "Login fallido!" << endl;
+	}
 }
 
 void Sesion::MostrarOpciones() {
@@ -56,11 +68,11 @@ void Sesion::MostrarOpciones() {
 }
 
 void Sesion::VerSaldo() {
-	cout << "Tu saldo es: " << endl;
+	cout << "Tu saldo es: " << usuario->getBalance() << endl;
 }
 
 void Sesion::VerTransacciones() {
-	cout << "Transacciones recientes" << endl;
+	cout << "Transacciones recientes..." << endl;
 }
 
 void Sesion::Retirar() {

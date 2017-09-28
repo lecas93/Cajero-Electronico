@@ -6,18 +6,27 @@
  */
 
 #pragma once
+#include <stdlib.h>
+#include "Utility.h"
+#include "Sesion.h"
+
+class Sesion;
+class Utility;
 
 using namespace std;
 
 class Usuario {
 public:
-	Usuario();
+	Usuario(string);
 	virtual ~Usuario();
 	string getNumTarjeta();
 	string getPIN();
+	string getName();
+	string getlastName();
+	string getPhone();
+	double getBalance();
+	void setValues(string, string, string, string, string);
 private:
-	void IdentificarUsuario();
-	bool checarSoloNumeros(string);
 	void Login();
 
 	string numTarjeta;

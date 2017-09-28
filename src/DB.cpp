@@ -6,12 +6,14 @@
  */
 
 #include "DB.h"
+#include <string>
+#include <sstream>
 
-DB::DB() {
+DB::DB(Usuario* usuario) {
 	// TODO Auto-generated constructor stub
-	//InsertUsuario("1987", "1987", "", "", "", 0);
-	//SelectUsuario("1234");
-	UpdateUsuario("1234");
+	this->usuario = usuario;
+	db = NULL;
+	//InsertUsuario("888", "888", "Manuel", "Gomez", "9991391405", 2000.50);
 }
 
 DB::~DB() {
@@ -33,11 +35,17 @@ void DB::AbrirBD() {
 }
 
 int DB::Callback(void *data, int argc, char **argv, char **azColName) {
-	int i;
-	cout << (const char*) data << endl;
-	for (i = 0; i < argc; i++) {
-		cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << endl;
-	}
+	/* Ciclo para imprimir todos los datos del usuario, util para debug
+	 int i;
+	 for (i = 0; i < argc; i++) {
+	 cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << endl;
+	 }*/
+
+	/*Esto se ejecuta con cada sentencia SQL, actualizando los datos locales del usuario al mismo tiempo*/
+	//Esto no debe pasar cuando se inserta un nuevo usuario, cuidado!
+	Usuario* u = (Usuario*) data;
+	u->setValues(string(argv[1]), string(argv[2]), string(argv[3]),
+			string(argv[4]), string(argv[5]));
 	cout << endl;
 	return 0;
 }
@@ -45,13 +53,13 @@ int DB::Callback(void *data, int argc, char **argv, char **azColName) {
 void DB::EjecutarSentenciaSQL(string sql) {
 	char *zErrMsg = 0;
 	int rc;
-	const char* data = "Callback function called";
+	//const char* data = "Callback function called";
 
 	/* Abrir base de datos */
 	AbrirBD();
 
 	/* Ejecutar sentencia SQL */
-	rc = sqlite3_exec(db, sql.c_str(), Callback, (void*) data, &zErrMsg);
+	rc = sqlite3_exec(db, sql.c_str(), Callback, (void*) usuario, &zErrMsg);
 
 	if (rc == SQLITE_OK) {
 		cout << "Operacion finalizada exitosamente!" << endl;
@@ -64,24 +72,28 @@ void DB::EjecutarSentenciaSQL(string sql) {
 	sqlite3_close(db);
 }
 
-//Insert de usuario basico, falta modificar para que añada la demas informacion a almacenar
+/*Aunque no se usa en los cajeros, para cuestiones de practica aqui se deja el codigo ejemplo*/
 void DB::InsertUsuario(string ID, string PIN, string NAME, string LNAME,
 		string PHONE, double BALANCE) {
 
-	string sql = "INSERT INTO USERS (ID,PIN) "
-			"VALUES ('" + ID + "', '" + PIN + "' );";
+	std::ostringstream strs;
+	strs << BALANCE;
+	string balance = strs.str();
+
+	string sql = "INSERT INTO USERS (ID,PIN,NAME,LNAME,PHONE,BALANCE) "
+			"VALUES ('" + ID + "', '" + PIN + "', '" + NAME + "', '" + LNAME
+			+ "', '" + PHONE + "', '" + balance + "' );";
 
 	EjecutarSentenciaSQL(sql);
 }
 
-//Modificiar para verficicar la existencia de un solo usuario
 void DB::SelectUsuario(string ID) {
 	string sql = "SELECT * from USERS where ID = '" + ID + "'";
 	EjecutarSentenciaSQL(sql);
 }
 
 void DB::UpdateUsuario(string ID) {
-	string sql = "UPDATE USERS set NAME = 'Angel' where ID=1234;";
+	string sql = "UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666;";
 	EjecutarSentenciaSQL(sql);
 }
 

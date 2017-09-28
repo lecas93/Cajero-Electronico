@@ -14,9 +14,10 @@ class DB;
 
 class Sesion {
 public:
-	Sesion(Usuario*);
+	Sesion(Usuario*,string);
 	virtual ~Sesion();
 private:
+	void ValidarUsuario();
 	void MostrarOpciones();
 	void VerSaldo();
 	void VerTransacciones();
@@ -27,5 +28,6 @@ private:
 	int opcion = 0, confirmacion = 0;
 
 	Usuario* usuario;
+	string PIN;
 	DB* db;
 };
