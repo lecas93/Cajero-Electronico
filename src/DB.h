@@ -9,11 +9,8 @@
 #include <iostream>
 #include <sqlite3.h>
 #include "Usuario.h"
-#include "Utility.h"
 
-class sqlite3;
 class Usuario;
-class Utility;
 
 using namespace std;
 
@@ -22,15 +19,17 @@ public:
 	DB(Usuario*);
 	virtual ~DB();
 	void InsertUsuario(string, string, string, string, string, double);
-	void DeleteUsuario();
+	void DeleteUsuario(string);
 	void SelectUsuario(string);
-	void UpdateUsuario(string);
-	void getBalance();
-	void UpdateBalance();
+	void UpdateUsuario(string);//
+	void ChangePIN(string);//
+	void getBalance(string);//
+	void UpdateBalance(string);//
 private:
 	void AbrirBD();
 	static int Callback(void*, int, char**, char**);
-	void EjecutarSentenciaSQL(string);
+	static int NoCallback(void*, int, char**, char**);
+	void EjecutarSentenciaSQL(string, bool);
 
 	sqlite3* db;
 	Usuario* usuario;

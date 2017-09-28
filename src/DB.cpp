@@ -42,7 +42,7 @@ int DB::Callback(void *data, int argc, char **argv, char **azColName) {
 	 }*/
 
 	/*Esto se ejecuta con cada sentencia SQL, actualizando los datos locales del usuario al mismo tiempo*/
-	//Esto no debe pasar cuando se inserta un nuevo usuario, cuidado!
+	//Esto no debe pasar cuando se inserta o elimina un usuario, cuidado!
 	Usuario* u = (Usuario*) data;
 	u->setValues(string(argv[1]), string(argv[2]), string(argv[3]),
 			string(argv[4]), string(argv[5]));
@@ -50,16 +50,29 @@ int DB::Callback(void *data, int argc, char **argv, char **azColName) {
 	return 0;
 }
 
-void DB::EjecutarSentenciaSQL(string sql) {
+int DB::NoCallback(void *data, int argc, char **argv, char **azColName) {
+	/* Ciclo para imprimir todos los datos del usuario, util para debug
+	 int i;
+	 for (i = 0; i < argc; i++) {
+	 cout << azColName[i] << " = " << (argv[i] ? argv[i] : "NULL") << endl;
+	 }*/
+	return 0;
+}
+
+void DB::EjecutarSentenciaSQL(string sql, bool useCallBack) {
 	char *zErrMsg = 0;
 	int rc;
-	//const char* data = "Callback function called";
+	const char* data = "Empty callback function called";
 
 	/* Abrir base de datos */
 	AbrirBD();
 
 	/* Ejecutar sentencia SQL */
-	rc = sqlite3_exec(db, sql.c_str(), Callback, (void*) usuario, &zErrMsg);
+	if (useCallBack) {
+		rc = sqlite3_exec(db, sql.c_str(), Callback, (void*) usuario, &zErrMsg);
+	} else {
+		rc = sqlite3_exec(db, sql.c_str(), NoCallback, (void*) data, &zErrMsg);
+	}
 
 	if (rc == SQLITE_OK) {
 		cout << "Operacion finalizada exitosamente!" << endl;
@@ -84,16 +97,22 @@ void DB::InsertUsuario(string ID, string PIN, string NAME, string LNAME,
 			"VALUES ('" + ID + "', '" + PIN + "', '" + NAME + "', '" + LNAME
 			+ "', '" + PHONE + "', '" + balance + "' );";
 
-	EjecutarSentenciaSQL(sql);
+	EjecutarSentenciaSQL(sql, false);
+}
+
+void DB::DeleteUsuario(string ID) {
+	string sql = "DELETE from USERS where ID = '" + ID + "';";
+	EjecutarSentenciaSQL(sql, false);
 }
 
 void DB::SelectUsuario(string ID) {
 	string sql = "SELECT * from USERS where ID = '" + ID + "'";
-	EjecutarSentenciaSQL(sql);
+	EjecutarSentenciaSQL(sql, true);
 }
 
 void DB::UpdateUsuario(string ID) {
-	string sql = "UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666;";
-	EjecutarSentenciaSQL(sql);
+	string sql =
+			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666;";
+	EjecutarSentenciaSQL(sql, true);
 }
 

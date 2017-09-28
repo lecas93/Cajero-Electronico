@@ -10,8 +10,6 @@
 #include "Usuario.h"
 #include "Utility.h"
 
-class Usuario;
-
 using namespace std;
 
 string numTarjeta;

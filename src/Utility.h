@@ -7,8 +7,6 @@
 #pragma once
 #include <iostream>
 
-class Usuario;
-
 using namespace std;
 
 class Utility {
