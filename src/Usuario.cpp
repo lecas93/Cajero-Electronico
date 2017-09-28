@@ -12,11 +12,11 @@
 class Sesion;
 
 Usuario::Usuario() {
-	numTarjeta = 0;
-	PIN = 0;
-	name = 0;
-	lName = 0;
-	phone = 0;
+	numTarjeta = "";
+	PIN = "";
+	name = "";
+	lName = "";
+	phone = "";
 	balance = 0;
 
 	IdentificarUsuario();

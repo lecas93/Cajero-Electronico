@@ -19,11 +19,12 @@ public:
 	virtual ~DB();
 	void InsertUsuario(string, string, string, string, string, double);
 	void SelectUsuario(string);
-	void UpdateUsuario();
+	void UpdateUsuario(string);
 	void DeleteUsuario(string);
 private:
-	void abrirBD();
-	static int callback(void*, int, char**, char**);
+	void AbrirBD();
+	static int Callback(void*, int, char**, char**);
+	void EjecutarSentenciaSQL(string);
 
 	sqlite3* db;
 };
