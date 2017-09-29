@@ -56,6 +56,10 @@ double Usuario::getBalance() {
 	return balance;
 }
 
+void Usuario::setBalance(double newBalance) {
+	this->balance = newBalance;
+}
+
 void Usuario::printResumen() {
 	cout << "*** Informacion personal ***" << endl;
 	cout << "Nombre: " << name + " " + lName << endl;

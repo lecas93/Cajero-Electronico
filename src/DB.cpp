@@ -59,6 +59,13 @@ int DB::NoCallback(void *data, int argc, char **argv, char **azColName) {
 	return 0;
 }
 
+string DB::toString(double cantidad) {
+	std::ostringstream strs;
+	strs << cantidad;
+	string strCantidad = strs.str();
+	return strCantidad;
+}
+
 void DB::EjecutarSentenciaSQL(string sql, bool useCallBack) {
 	char *zErrMsg = 0;
 	int rc;
@@ -89,13 +96,9 @@ void DB::EjecutarSentenciaSQL(string sql, bool useCallBack) {
 void DB::InsertUsuario(string ID, string PIN, string NAME, string LNAME,
 		string PHONE, double BALANCE) {
 
-	std::ostringstream strs;
-	strs << BALANCE;
-	string balance = strs.str();
-
 	string sql = "INSERT INTO USERS (ID,PIN,NAME,LNAME,PHONE,BALANCE) "
 			"VALUES ('" + ID + "', '" + PIN + "', '" + NAME + "', '" + LNAME
-			+ "', '" + PHONE + "', '" + balance + "' );";
+			+ "', '" + PHONE + "', '" + toString(BALANCE) + "' );";
 
 	EjecutarSentenciaSQL(sql, false);
 }
@@ -110,10 +113,15 @@ void DB::SelectUsuario(string ID) {
 	EjecutarSentenciaSQL(sql, true);
 }
 
+void DB::UpdateBalance(string ID, double newBalance) {
+	string sql = "UPDATE USERS set BALANCE = '" + toString(newBalance)
+			+ "' where ID = '" + ID + "';";
+}
+
 void DB::UpdateUsuario(string ID) {
 	string sql =
 			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666; "
 					"SELECT * from USERS where ID = '" + ID + "';";
-	EjecutarSentenciaSQL(sql, true);
+	EjecutarSentenciaSQL(sql, false);
 }
 

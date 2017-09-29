@@ -25,6 +25,7 @@ public:
 	string getlastName();
 	string getPhone();
 	double getBalance();
+	void setBalance(double);
 	void printResumen();
 	void setValues(string, string, string, string, string);
 private:

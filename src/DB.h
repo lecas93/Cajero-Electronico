@@ -24,12 +24,13 @@ public:
 	void UpdateUsuario(string);//
 	void ChangePIN(string);//
 	void getBalance(string);//
-	void UpdateBalance(string);//
+	void UpdateBalance(string, double);//
 private:
 	void AbrirBD();
 	static int Callback(void*, int, char**, char**);
 	static int NoCallback(void*, int, char**, char**);
 	void EjecutarSentenciaSQL(string, bool);
+	string toString(double);
 
 	sqlite3* db;
 	Usuario* usuario;
