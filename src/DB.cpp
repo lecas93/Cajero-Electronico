@@ -112,7 +112,8 @@ void DB::SelectUsuario(string ID) {
 
 void DB::UpdateUsuario(string ID) {
 	string sql =
-			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666;";
+			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666; "
+					"SELECT * from USERS where ID = '" + ID + "';";
 	EjecutarSentenciaSQL(sql, true);
 }
 

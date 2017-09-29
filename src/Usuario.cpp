@@ -40,20 +40,27 @@ string Usuario::getPIN() {
 	return PIN;
 }
 
-string Usuario::getName(){
+string Usuario::getName() {
 	return name;
 }
 
-string Usuario::getlastName(){
+string Usuario::getlastName() {
 	return lName;
 }
 
-string Usuario::getPhone(){
+string Usuario::getPhone() {
 	return phone;
 }
 
-double Usuario::getBalance(){
+double Usuario::getBalance() {
 	return balance;
+}
+
+void Usuario::printResumen() {
+	cout << "*** Informacion personal ***" << endl;
+	cout << "Nombre: " << name + " " + lName << endl;
+	cout << "Telefono: " << phone << endl;
+	cout << "Saldo: " << balance << endl;
 }
 
 void Usuario::Login() {
