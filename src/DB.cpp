@@ -119,6 +119,7 @@ void DB::UpdateBalance(string ID, double newBalance) {
 	EjecutarSentenciaSQL(sql, false);
 }
 
+//Falta modificar...
 void DB::UpdateUsuario(string ID) {
 	string sql =
 			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666; "

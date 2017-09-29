@@ -23,8 +23,7 @@ public:
 	void SelectUsuario(string);
 	void UpdateUsuario(string);//
 	void ChangePIN(string);//
-	void getBalance(string);//
-	void UpdateBalance(string, double);//
+	void UpdateBalance(string, double);
 private:
 	void AbrirBD();
 	static int Callback(void*, int, char**, char**);
