@@ -78,8 +78,10 @@ void Sesion::VerTransacciones() {
 
 void Sesion::Retirar() {
 	double cantRetiro;
+
 	cout << "Ingrese la cantidad a retirar:" << endl;
 	cin >> cantRetiro;
+
 	if (cantRetiro > 1000) {
 		cout << "Solo puede retirar un valor maximo de $1000 por transaccion"
 				<< endl;
@@ -88,6 +90,8 @@ void Sesion::Retirar() {
 		if (newBalance > 0) {
 			usuario->setBalance(newBalance);
 			db->UpdateBalance(usuario->getNumTarjeta(), newBalance);
+			cout << "Retiro exitoso!" << endl;
+			system("pause");
 		} else {
 			cout << "Saldo insuficiente para este retiro" << endl;
 		}

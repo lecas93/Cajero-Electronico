@@ -116,6 +116,7 @@ void DB::SelectUsuario(string ID) {
 void DB::UpdateBalance(string ID, double newBalance) {
 	string sql = "UPDATE USERS set BALANCE = '" + toString(newBalance)
 			+ "' where ID = '" + ID + "';";
+	EjecutarSentenciaSQL(sql, false);
 }
 
 void DB::UpdateUsuario(string ID) {

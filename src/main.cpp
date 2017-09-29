@@ -27,8 +27,9 @@ void ValidarUsuario() {
 }
 
 int main() {
-	//system("pause");
-	ValidarUsuario();
-	system("pause");
+	while (true) {
+		system("pause");
+		ValidarUsuario();
+	}
 	return 0;
 }
