@@ -21,8 +21,8 @@ UPDATE 29/09/2017
 6. Para un programa más complicado, incluya la posibilidad de registrar un nuevo PIN y número de teléfono, un estado de cuenta detallado, un sistema rápido de retirada de efectivo de 20$, 50$ o 100$, etc : EN PROGRESO.
 
 EN PROGRESO:
-4.- Cinco transacciones recientes.
-5.- Límite de 10 transacciones al día.
-6.- Registrar nuevo PIN.
-6.- Registrar número de teléfono.
-6.- Sistema rápido de retirada.
+1. Cinco transacciones recientes.
+2. Límite de 10 transacciones al día.
+3. Registrar nuevo PIN.
+4. Registrar número de teléfono.
+5. Sistema rápido de retirada.
