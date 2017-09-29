@@ -72,7 +72,8 @@ void Sesion::VerSaldo() {
 }
 
 void Sesion::VerTransacciones() {
-	cout << "Transacciones recientes..." << endl;
+	usuario->printResumen();
+	cout << "\nTransacciones recientes..." << endl;
 }
 
 void Sesion::Retirar() {
