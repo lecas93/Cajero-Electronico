@@ -40,7 +40,7 @@ void Sesion::MostrarOpciones() {
 		cout << "Ingrese una opcion:\n1.- Ver saldo actual\n"
 				<< "2.- Ver transacciones recientes\n"
 				<< "3.- Realizar un retiro\n"
-				<< "4.- Modificar informacion personal" << "5.- Salir" << endl;
+				<< "4.- Modificar informacion personal\n" << "5.- Salir" << endl;
 		cin >> opcion;
 		switch (opcion) {
 		case 1:
@@ -104,29 +104,30 @@ void Sesion::Retirar() {
 }
 
 void Sesion::ModificarInformacion() {
-	int opcion;
+	int op;
+	string newPin, newPhone;
 
 	cout << "1.- Modificar PIN\n2.- Modificar telefono" << endl;
-	cin >> opcion;
+	cin >> op;
 
-	switch (opcion) {
+	switch (op) {
 	case 1:
-		string newPin;
 		cout << "Ingrese nuevo PIN" << endl;
 		cin >> newPin;
 		if (Utility::checarSoloNumeros(newPin)) {
-			db->UpdatePIN(usuario->numTarjeta, newPin);
+			usuario->setPIN(newPin);
+			db->UpdatePIN(usuario->getNumTarjeta(), newPin);
 		} else {
 			cout << "PIN invalido! Solo debe contener valores numericos!"
 					<< endl;
 		}
 		break;
 	case 2:
-		string newPhone;
 		cout << "Ingrese su nuevo numero de telefono" << endl;
 		cin >> newPhone;
 		if (Utility::checarSoloNumeros(newPhone)) {
-			db->UpdatePhone(usuario->numTarjeta, newPhone);
+			usuario->setPhone(newPhone);
+			db->UpdatePhone(usuario->getNumTarjeta(), newPhone);
 		} else {
 			cout << "Telefono invalido! Solo debe contener valores numericos!"
 					<< endl;

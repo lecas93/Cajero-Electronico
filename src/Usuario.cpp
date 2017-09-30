@@ -40,6 +40,10 @@ string Usuario::getPIN() {
 	return PIN;
 }
 
+void Usuario::setPIN(string newPIN) {
+	this->PIN = newPIN;
+}
+
 string Usuario::getName() {
 	return name;
 }
@@ -50,6 +54,10 @@ string Usuario::getlastName() {
 
 string Usuario::getPhone() {
 	return phone;
+}
+
+void Usuario::setPhone(string newPhone) {
+	this->phone = newPhone;
 }
 
 double Usuario::getBalance() {

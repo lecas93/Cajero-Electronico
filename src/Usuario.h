@@ -21,9 +21,11 @@ public:
 	virtual ~Usuario();
 	string getNumTarjeta();
 	string getPIN();
+	void setPIN(string);
 	string getName();
 	string getlastName();
 	string getPhone();
+	void setPhone(string);
 	double getBalance();
 	void setBalance(double);
 	void printResumen();
