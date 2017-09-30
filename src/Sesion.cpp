@@ -105,8 +105,10 @@ void Sesion::Retirar() {
 
 void Sesion::ModificarInformacion() {
 	int opcion;
+
 	cout << "1.- Modificar PIN\n2.- Modificar telefono" << endl;
 	cin >> opcion;
+
 	switch (opcion) {
 	case 1:
 		string newPin;
