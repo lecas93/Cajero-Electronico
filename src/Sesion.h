@@ -21,6 +21,7 @@ private:
 	void MostrarOpciones();
 	void VerSaldo();
 	void VerTransacciones();
+	void ModificarInformacion();
 	void Retirar();
 	void ConfirmarSalida();
 

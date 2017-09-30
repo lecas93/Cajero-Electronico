@@ -37,9 +37,10 @@ void Sesion::ValidarUsuario() {
 
 void Sesion::MostrarOpciones() {
 	while (sesionActiva) {
-		cout << "Ingrese una opcion:\n1.- Checar saldo\n"
+		cout << "Ingrese una opcion:\n1.- Ver saldo actual\n"
 				<< "2.- Ver transacciones recientes\n"
-				<< "3.- Realizar un retiro\n4.- Salir" << endl;
+				<< "3.- Realizar un retiro\n"
+				<< "4.- Modificar informacion personal" << "5.- Salir" << endl;
 		cin >> opcion;
 		switch (opcion) {
 		case 1:
@@ -52,9 +53,12 @@ void Sesion::MostrarOpciones() {
 			break;
 		case 3:
 			Retirar();
-			sesionActiva = false;
 			break;
 		case 4:
+			ModificarInformacion();
+			ConfirmarSalida();
+			break;
+		case 5:
 			sesionActiva = false;
 			break;
 		default:
@@ -87,14 +91,48 @@ void Sesion::Retirar() {
 				<< endl;
 	} else {
 		double newBalance = usuario->getBalance() - cantRetiro;
-		if (newBalance > 0) {
+		if (newBalance >= 0) {
 			usuario->setBalance(newBalance);
 			db->UpdateBalance(usuario->getNumTarjeta(), newBalance);
 			cout << "Retiro exitoso!" << endl;
+			sesionActiva = false;
 			system("pause");
 		} else {
 			cout << "Saldo insuficiente para este retiro" << endl;
 		}
+	}
+}
+
+void Sesion::ModificarInformacion() {
+	int opcion;
+	cout << "1.- Modificar PIN\n2.- Modificar telefono" << endl;
+	cin >> opcion;
+	switch (opcion) {
+	case 1:
+		string newPin;
+		cout << "Ingrese nuevo PIN" << endl;
+		cin >> newPin;
+		if (Utility::checarSoloNumeros(newPin)) {
+			db->UpdatePIN(usuario->numTarjeta, newPin);
+		} else {
+			cout << "PIN invalido! Solo debe contener valores numericos!"
+					<< endl;
+		}
+		break;
+	case 2:
+		string newPhone;
+		cout << "Ingrese su nuevo numero de telefono" << endl;
+		cin >> newPhone;
+		if (Utility::checarSoloNumeros(newPhone)) {
+			db->UpdatePhone(usuario->numTarjeta, newPhone);
+		} else {
+			cout << "Telefono invalido! Solo debe contener valores numericos!"
+					<< endl;
+		}
+		break;
+	default:
+		cout << "Opcion no valida!" << endl;
+		break;
 	}
 }
 
