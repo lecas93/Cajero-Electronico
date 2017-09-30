@@ -21,9 +21,9 @@ UPDATE 29/09/2017
 6. Para un programa más complicado, incluya la posibilidad de registrar un nuevo PIN y número de teléfono, un estado de cuenta detallado, un sistema rápido de retirada de efectivo de 20$, 50$ o 100$, etc : EN PROGRESO.
 
 UPDATE 30/09/2017
-4. En caso de verificacion positiva, mostrar varias opciones, incluyendo disponibilidad de efectivo, cinco transacciones recientes, y retirarada de efectivo : EN PROGRESO.
-5. Dar la posibilidad al usuario de retirar hasta 1000$ en efectivo en cada transacción hasta un total de transacciones límite de 10 al día : EN PROGRESO.
-6. Para un programa más complicado, incluya la posibilidad de registrar un nuevo PIN y número de teléfono, un estado de cuenta detallado, un sistema rápido de retirada de efectivo de 20$, 50$ o 100$, etc : LISTO.
+1. En caso de verificacion positiva, mostrar varias opciones, incluyendo disponibilidad de efectivo, cinco transacciones recientes, y retirarada de efectivo : EN PROGRESO.
+2. Dar la posibilidad al usuario de retirar hasta 1000$ en efectivo en cada transacción hasta un total de transacciones límite de 10 al día : EN PROGRESO.
+3. Para un programa más complicado, incluya la posibilidad de registrar un nuevo PIN y número de teléfono, un estado de cuenta detallado, un sistema rápido de retirada de efectivo de 20$, 50$ o 100$, etc : LISTO.
 
 EN PROGRESO:
 1. Cinco transacciones recientes.
