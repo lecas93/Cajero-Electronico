@@ -119,11 +119,15 @@ void DB::UpdateBalance(string ID, double newBalance) {
 	EjecutarSentenciaSQL(sql, false);
 }
 
-//Falta modificar...
-void DB::UpdateUsuario(string ID) {
-	string sql =
-			"UPDATE USERS set NAME = 'Pancho', LNAME = 'Villa', PHONE = '9811215463', BALANCE = '5567.75' where ID=666; "
-					"SELECT * from USERS where ID = '" + ID + "';";
+void DB::UpdatePhone(string ID, string newPhone) {
+	string sql = "UPDATE USERS set PHONE = '" + newPhone + "' where ID = '" + ID
+			+ "';";
+	EjecutarSentenciaSQL(sql, false);
+}
+
+void DB::UpdatePIN(string ID, string newPin) {
+	string sql = "UPDATE USERS set PIN = '" + newPin + "' where ID = '" + ID
+			+ "';";
 	EjecutarSentenciaSQL(sql, false);
 }
 

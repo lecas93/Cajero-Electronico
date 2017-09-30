@@ -21,8 +21,8 @@ public:
 	void InsertUsuario(string, string, string, string, string, double);
 	void DeleteUsuario(string);
 	void SelectUsuario(string);
-	void UpdateUsuario(string);//
-	void ChangePIN(string);//
+	void UpdatePhone(string,string);
+	void UpdatePIN(string,string);
 	void UpdateBalance(string, double);
 private:
 	void AbrirBD();
