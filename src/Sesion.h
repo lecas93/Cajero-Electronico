@@ -23,6 +23,7 @@ private:
 	void VerTransacciones();
 	void ModificarInformacion();
 	void Retirar();
+	void RealizarRetiro(double);
 	void ConfirmarSalida();
 
 	bool sesionActiva = false;

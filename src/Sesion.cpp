@@ -40,7 +40,8 @@ void Sesion::MostrarOpciones() {
 		cout << "Ingrese una opcion:\n1.- Ver saldo actual\n"
 				<< "2.- Ver transacciones recientes\n"
 				<< "3.- Realizar un retiro\n"
-				<< "4.- Modificar informacion personal\n" << "5.- Salir" << endl;
+				<< "4.- Modificar informacion personal\n" << "5.- Salir"
+				<< endl;
 		cin >> opcion;
 		switch (opcion) {
 		case 1:
@@ -81,11 +82,35 @@ void Sesion::VerTransacciones() {
 }
 
 void Sesion::Retirar() {
+	int op;
 	double cantRetiro;
 
-	cout << "Ingrese la cantidad a retirar:" << endl;
-	cin >> cantRetiro;
+	cout << "1.- $20\n2.- $50\n3.- $100\n4.- Otra cantidad" << endl;
+	cin >> op;
 
+	switch (op) {
+	case 1:
+		RealizarRetiro(20);
+		break;
+	case 2:
+		RealizarRetiro(50);
+		break;
+	case 3:
+		RealizarRetiro(100);
+		break;
+	case 4:
+		cout << "Ingrese la cantidad a retirar:" << endl;
+		cin >> cantRetiro;
+		RealizarRetiro(cantRetiro);
+		break;
+	default:
+		cout << "Opcion no valida!" << endl;
+		break;
+	}
+
+}
+
+void Sesion::RealizarRetiro(double cantRetiro) {
 	if (cantRetiro > 1000) {
 		cout << "Solo puede retirar un valor maximo de $1000 por transaccion"
 				<< endl;
@@ -96,11 +121,12 @@ void Sesion::Retirar() {
 			db->UpdateBalance(usuario->getNumTarjeta(), newBalance);
 			cout << "Retiro exitoso!" << endl;
 			sesionActiva = false;
-			system("pause");
 		} else {
 			cout << "Saldo insuficiente para este retiro" << endl;
 		}
+
 	}
+	system("pause");
 }
 
 void Sesion::ModificarInformacion() {
